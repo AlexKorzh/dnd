@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CustomDnD</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<p>Возьмите за любой заголовок и поменяйте ему родителя.
+<br> В собственных детей перенести нельзя.
+    <br> Потомки всегда отсортированы по алфавиту.</p>
+
+<ul id="tree">
+    <li><span class="draggable droppable">Древо жизни (сверхмалая часть)</span>
+        <ul>
+            <li><span class="draggable droppable">Грибы</span>
+                <ul>
+                    <li><span class="draggable droppable">Древесные</span>
+                        <ul>
+                            <li><span class="draggable droppable">Чага</span></li>
+                        </ul>
+                    </li>
+                    <li><span class="draggable droppable">Наземные</span>
+                        <ul>
+                            <li><span class="draggable droppable">Опята</span></li>
+                            <li><span class="draggable droppable">Подосиновики</span></li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </li>
+            <li><span class="draggable droppable">Животные</span>
+                <ul>
+                    <li><span class="draggable droppable">Земноводные</span>
+                        <ul>
+                            <li><span class="draggable droppable">Лягушки</span></li>
+                            <li><span class="draggable droppable">Саламандры</span></li>
+                            <li><span class="draggable droppable">Тритоны</span></li>
+                        </ul>
+                    </li>
+                    <li><span class="draggable droppable">Млекопитающие</span>
+                        <ul>
+                            <li><span class="draggable droppable">Коровы</span></li>
+                            <li><span class="draggable droppable">Ослы</span></li>
+                            <li><span class="draggable droppable">Собаки</span></li>
+                            <li><span class="draggable droppable">Тигры</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<script src="dest/bundle.js"></script>
+</body>
+</html>
