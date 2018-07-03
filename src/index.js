@@ -7,17 +7,7 @@ import TreeDragZone from './TreeDragZone';
 import TreeDropTarget from './TreeDropTarget';
 import TreeDragAvatar from './TreeDragAvatar';
 
-const dnd = {
-    DragManager,
-    DragAvatar,
-    DropTarget,
-    DragZone,
-    TreeDragZone,
-    TreeDropTarget,
-    TreeDragAvatar
-};
-
-export default dnd;
+export { DragManager } from './DragManager';
 
 // let tree = document.querySelector('#tree');
 // let dragElement = document.querySelector('.draggable');
