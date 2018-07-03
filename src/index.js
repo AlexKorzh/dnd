@@ -8,6 +8,13 @@ import TreeDropTarget from './TreeDropTarget';
 import TreeDragAvatar from './TreeDragAvatar';
 
 export { DragManager } from './DragManager';
+export { DragAvatar } from './DragAvatar';
+export { DropTarget } from './DropTarget';
+
+export { TreeDragZone } from './TreeDragZone';
+export { TreeDropTarget } from './TreeDropTarget';
+export { TreeDragAvatar } from './TreeDragAvatar';
+
 
 // let tree = document.querySelector('#tree');
 // let dragElement = document.querySelector('.draggable');
