@@ -1,4 +1,4 @@
-let dragManager = (function () {
+let dragManager = function () {
 
     let dragZone, avatar, dropTarget;
     let downX, downY;
@@ -121,20 +121,22 @@ let dragManager = (function () {
             return elem.dropTarget;
         }
 
-        // document.ondragstart = function() {
-        //     return false;
-        // };
-        //
-        // document.onmousemove = onMouseMove;
-        // document.onmouseup = onMouseUp;
-        // document.onmousedown = onMouseDown;
-
         (function initListeners() {
             document.addEventListener('dragstart', onDragStart);
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
             document.addEventListener('mousedown', onMouseDown);
         })();
+
+        return {
+            onDragStart: onDragStart,
+            onMouseDown: onMouseDown,
+            onMouseMove: onMouseMove,
+            onMouseUp: onMouseUp,
+            cleanUp: cleanUp,
+            findDragZone: findDragZone,
+            findDropTarget: findDropTarget
+        };
     }
 
     return {
@@ -142,14 +144,14 @@ let dragManager = (function () {
         // or create one if it doesn't
         getInstance: function () {
 
-            if ( !instance ) {
+            if (!instance) {
                 instance = init();
             }
 
             return instance;
         }
-    };
 
-})();
+    };
+}();
 
 export default dragManager;

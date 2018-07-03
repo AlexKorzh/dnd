@@ -9,6 +9,8 @@ import TreeDragAvatar from './TreeDragAvatar';
 
 export { DragManager, DragAvatar, DropTarget, DragZone, TreeDragZone, TreeDropTarget, TreeDragAvatar };
 
+// let dragManager = DragManager.getInstance();
+//
 // let tree = document.querySelector('#tree');
 // let dragElement = document.querySelector('.draggable');
 //
