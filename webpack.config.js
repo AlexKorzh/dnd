@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     mode: 'development',
@@ -10,10 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, 'lib'),
         filename: 'index.js',
         publicPath: '/lib/',
-        library: '',
-        libraryTarget: 'commonjs'
     },
-    externals: [nodeExternals()],
     module: {
         rules: [
             {

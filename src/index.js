@@ -17,6 +17,8 @@ export {
     TreeDragAvatar
 }
 
+// let dragManager = DragManager.getInstance();
+//
 // let tree = document.querySelector('#tree');
 // let dragElement = document.querySelector('.draggable');
 //
