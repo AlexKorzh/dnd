@@ -8,7 +8,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'lib'),
         filename: 'index.js',
-        publicPath: '/lib/'
+        publicPath: '/lib/',
+        libraryTarget: 'commonjs'
     },
     module: {
         rules: [
