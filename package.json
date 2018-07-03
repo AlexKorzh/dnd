@@ -2,7 +2,7 @@
     "name": "dnd",
     "version": "1.0.0",
     "description": "Relate dnd",
-    "main": "index.js",
+    "main": "dist/index.js",
     "scripts": {
         "start": "webpack-dev-server --inline --hot",
         "build": "webpack"
