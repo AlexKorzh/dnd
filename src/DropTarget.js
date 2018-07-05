@@ -13,6 +13,21 @@ export default function DropTarget(elem) {
 }
 
 /**
+ * Инициализация элемента (получение ссылки на DOM - элемент)
+ * @param elem DOM-элемент, к которому привязана зона
+ */
+
+DropTarget.prototype.init = function (elem) {
+    elem.dropTarget = this;
+    this._elem = elem;
+
+    /**
+     * Подэлемент, над которым в настоящий момент находится аватар
+     */
+    this._targetElem = null;
+};
+
+/**
  * Возвращает DOM-подэлемент, над которым сейчас пролетает аватар
  *
  * @return DOM-элемент, на который можно положить или undefined

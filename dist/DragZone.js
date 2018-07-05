@@ -9,6 +9,16 @@ export default function DragZone(elem) {
 }
 
 /**
+ * Инициализация элемента (получение ссылки на DOM - элемент)
+ * @param elem DOM-элемент, к которому привязана зона
+ */
+
+DragZone.prototype.init = function (elem) {
+  elem.dragZone = this;
+  this._elem = elem;
+};
+
+/**
  * Создать аватар, соответствующий зоне.
  * У разных зон могут быть разные типы аватаров
  */

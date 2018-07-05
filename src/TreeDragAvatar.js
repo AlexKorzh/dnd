@@ -1,3 +1,4 @@
+
 import DragAvatar from './DragAvatar';
 import {getCoords} from './utils';
 
