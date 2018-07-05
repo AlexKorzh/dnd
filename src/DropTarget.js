@@ -17,7 +17,7 @@ export default function DropTarget(elem) {
  * @param elem DOM-элемент, к которому привязана зона
  */
 
-DropTarget.prototype.init = function (elem) {
+DropTarget.prototype.initDropTarget = function (elem) {
     elem.dropTarget = this;
     this._elem = elem;
 
