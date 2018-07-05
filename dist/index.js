@@ -2,12 +2,13 @@ import DragManager from './DragManager';
 import DragAvatar from './DragAvatar';
 import DropTarget from './DropTarget';
 import DragZone from './DragZone';
+import utils from './utils';
 
 import TreeDragZone from './TreeDragZone';
 import TreeDropTarget from './TreeDropTarget';
 import TreeDragAvatar from './TreeDragAvatar';
 
-export { DragManager, DragAvatar, DropTarget, DragZone, TreeDragZone, TreeDropTarget, TreeDragAvatar };
+export { DragManager, DragAvatar, DropTarget, DragZone, TreeDragZone, TreeDropTarget, TreeDragAvatar, utils };
 
 // let dragManager = DragManager.getInstance();
 //

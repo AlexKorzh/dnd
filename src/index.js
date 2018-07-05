@@ -2,6 +2,7 @@ import DragManager from './DragManager';
 import DragAvatar from './DragAvatar';
 import DropTarget from './DropTarget';
 import DragZone from './DragZone';
+import utils from './utils';
 
 import TreeDragZone from './TreeDragZone';
 import TreeDropTarget from './TreeDropTarget';
@@ -14,7 +15,8 @@ export {
     DragZone,
     TreeDragZone,
     TreeDropTarget,
-    TreeDragAvatar
+    TreeDragAvatar,
+    utils
 }
 
 // let dragManager = DragManager.getInstance();

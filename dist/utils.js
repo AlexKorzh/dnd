@@ -44,3 +44,9 @@ export function extend(Child, Parent) {
     Child.prototype.constructor = Child;
     Child.parent = Parent.prototype;
 }
+
+export default {
+    extend,
+    getCoords,
+    getElementUnderClientXY
+};
