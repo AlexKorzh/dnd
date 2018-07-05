@@ -13,7 +13,7 @@ export default function DragZone(elem) {
  * @param elem DOM-элемент, к которому привязана зона
  */
 
-DragZone.prototype.init = function (elem) {
+DragZone.prototype.initDragZone = function (elem) {
   elem.dragZone = this;
   this._elem = elem;
 };
