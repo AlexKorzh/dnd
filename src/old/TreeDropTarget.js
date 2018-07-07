@@ -1,8 +1,9 @@
 import DropTarget from './DropTarget';
+import {extend} from '../utils';
 
 export default class TreeDropTarget extends DropTarget {
-    constructor(props) {
-        super(props);
+    constructor(elem) {
+        super(elem);
     }
 
     _showHoverIndication () {

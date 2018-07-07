@@ -19,12 +19,12 @@ export {
     utils
 }
 
-// let dragManager = DragManager.getInstance();
-//
-// let tree = document.querySelector('#tree');
-// let dragElement = document.querySelector('.draggable');
-//
-// const treeDragZone = new TreeDragZone(tree);
-// const treeDropTarget = new TreeDropTarget(tree);
+let dragManager = DragManager.getInstance();
+
+let tree = document.querySelector('#tree');
+let dragElement = document.querySelector('.draggable');
+debugger;
+const treeDragZone = new TreeDragZone({elem: tree});
+const treeDropTarget = new TreeDropTarget({elem: tree});
 
 

@@ -2,10 +2,10 @@ import DragZone from './DragZone';
 import TreeDragAvatar from './TreeDragAvatar';
 
 export default class TreeDragZone extends DragZone {
-    constructor(elem) {
-        super(elem);
+    constructor(props) {
+        super(props);
     }
     _makeAvatar () {
-        return new TreeDragAvatar(this, this._elem);
+        return new TreeDragAvatar({dragZone: this, dragElem: this._elem});
     }
 }

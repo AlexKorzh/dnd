@@ -1,15 +1,14 @@
+
 import DragAvatar from './DragAvatar';
-import { getCoords } from './utils';
+import {getCoords} from '../utils';
 
 export default class TreeDragAvatar extends DragAvatar {
-    constructor(props) {
-        super(props);
+    constructor (dragZone, dragElem) {
+        super(dragZone, dragElem);
     }
 
-    initFromEvent(downX, downY, event) {
-        // Отмена переноса если переносимый
-        // элемент не содержит класс draggable
-        if (event.target.closest('.draggable') === null) return false;
+    initFromEvent (downX, downY, event) {
+        if (!event.target.classList.contains('draggable')) return false;
 
         this._dragZoneElem = event.target;
 
@@ -32,15 +31,15 @@ export default class TreeDragAvatar extends DragAvatar {
         return true;
     }
 
-    _destroy() {
+    _destroy () {
         this._elem.parentNode.removeChild(this._elem);
     }
 
-    onDragCancel() {
+    onDragCancel () {
         this._destroy();
     }
 
-    onDragEnd() {
+    onDragEnd () {
         this._destroy();
     }
 }
