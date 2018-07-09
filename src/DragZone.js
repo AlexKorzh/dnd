@@ -15,6 +15,7 @@ export default function DragZone(elem) {
  */
 
 DragZone.prototype.initDragZone = function(elem) {
+    this._elem = elem;
     elem.dragZone = this;
 };
 
