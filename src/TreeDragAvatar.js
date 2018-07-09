@@ -1,4 +1,4 @@
-import DragAvatar from './DragAvatar';
+import DragAvatar from './react/DragAvatar';
 import {getCoords} from './utils';
 
 export default class TreeDragAvatar extends DragAvatar {

@@ -1,4 +1,4 @@
-import DropTarget from './DropTarget';
+import DropTarget from '../DropTarget';
 import { extend } from '../utils';
 
 export default class TreeDropTarget extends DropTarget {

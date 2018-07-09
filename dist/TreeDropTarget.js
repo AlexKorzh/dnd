@@ -1,4 +1,4 @@
-import DropTarget from './DropTarget';
+import DropTarget from './react/DropTarget';
 
 export default class TreeDropTarget extends DropTarget {
     constructor(props) {
