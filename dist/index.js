@@ -1,7 +1,7 @@
 import DragManager from './DragManager';
-import DragAvatar from './react/DragAvatar';
-import DropTarget from './react/DropTarget';
-import DragZone from './react/DragZone';
+import DragAvatar from './DragAvatar';
+import DropTarget from './DropTarget';
+import DragZone from './DragZone';
 import utils from './utils';
 
 import TreeDragZone from './TreeDragZone';
