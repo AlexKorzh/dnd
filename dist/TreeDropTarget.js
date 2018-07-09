@@ -18,7 +18,7 @@ export default class TreeDropTarget extends DropTarget {
     _getTargetElem(avatar, event) {
         let target = avatar.getTargetElem();
 
-        if (!target.classList.contains('droppable')) {
+        if (!target.closest('.droppable')) {
             return;
         }
 
