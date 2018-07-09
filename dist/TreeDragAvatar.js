@@ -2,8 +2,8 @@ import DragAvatar from './DragAvatar';
 import { getCoords } from './utils';
 
 export default class TreeDragAvatar extends DragAvatar {
-    constructor(props) {
-        super(props);
+    constructor(dragZone, dragElem) {
+        super(dragZone, dragElem);
     }
 
     initFromEvent(downX, downY, event) {
