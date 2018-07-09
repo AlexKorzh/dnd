@@ -20,6 +20,8 @@ export default function DropTarget(elem) {
 
 DropTarget.prototype.initDropTarget = function (elem) {
   elem.dropTarget = this;
+  this._elem = elem;
+  this._targetElem = null;
 };
 
 /**
