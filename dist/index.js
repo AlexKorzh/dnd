@@ -15,5 +15,8 @@ export { DragManager, DragAvatar, DropTarget, DragZone, TreeDragZone, TreeDropTa
 // let tree = document.querySelector('#tree');
 // let dragElement = document.querySelector('.draggable');
 //
-// const treeDragZone = new TreeDragZone({elem: tree});
-// const treeDropTarget = new TreeDropTarget({elem: tree});
+// const treeDragZone = new TreeDragZone(tree);
+// const treeDropTarget = new TreeDropTarget(tree);
+//
+// treeDragZone.initDragZone(tree);
+// treeDropTarget.initDropTarget(tree);

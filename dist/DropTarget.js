@@ -3,7 +3,8 @@
  * Занимается индикацией передвижения по себе, добавлением в себя
  */
 export default function DropTarget(elem) {
-  elem.dropTarget = this;
+  // commented because is not extensible error occurred
+  // elem.dropTarget = this;
   this._elem = elem;
 
   /**
@@ -19,12 +20,6 @@ export default function DropTarget(elem) {
 
 DropTarget.prototype.initDropTarget = function (elem) {
   elem.dropTarget = this;
-  this._elem = elem;
-
-  /**
-   * Подэлемент, над которым в настоящий момент находится аватар
-   */
-  this._targetElem = null;
 };
 
 /**
