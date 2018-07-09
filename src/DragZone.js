@@ -4,8 +4,9 @@
  * @param elem DOM-элемент, к которому привязана зона
  */
 export default function DragZone(elem) {
-  elem.dragZone = this;
-  this._elem = elem;
+    // commented because is not extensible error occurred
+    // elem.dragZone = this;
+    this._elem = elem;
 }
 
 /**
@@ -13,9 +14,8 @@ export default function DragZone(elem) {
  * @param elem DOM-элемент, к которому привязана зона
  */
 
-DragZone.prototype.initDragZone = function (elem) {
+DragZone.prototype.initDragZone = function(elem) {
     elem.dragZone = this;
-    this._elem = elem;
 };
 
 /**
@@ -23,7 +23,7 @@ DragZone.prototype.initDragZone = function (elem) {
  * У разных зон могут быть разные типы аватаров
  */
 DragZone.prototype._makeAvatar = function() {
-  /* override */
+    /* override */
 };
 
 /**
@@ -39,11 +39,11 @@ DragZone.prototype._makeAvatar = function() {
  */
 DragZone.prototype.onDragStart = function(downX, downY, event) {
 
-  let avatar = this._makeAvatar();
+    let avatar = this._makeAvatar();
 
-  if (!avatar.initFromEvent(downX, downY, event)) {
-    return false;
-  }
+    if (!avatar.initFromEvent(downX, downY, event)) {
+        return false;
+    }
 
-  return avatar;
+    return avatar;
 };
