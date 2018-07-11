@@ -7,7 +7,8 @@ export default class DropTarget extends Mediator {
     constructor (elem) {
         super();
 
-        elem.dropTarget = this;
+        if (elem !== null) elem.dropTarget = this;
+
         this._elem = elem;
         /**
          * Подэлемент, над которым в настоящий момент находится аватар

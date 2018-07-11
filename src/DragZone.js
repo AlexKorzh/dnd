@@ -8,7 +8,7 @@ export default class DragZone extends Mediator {
     constructor(elem) {
         super();
 
-        elem.dragZone = this;
+        if (elem !== null) elem.dragZone = this;
         this._elem = elem;
     }
 
