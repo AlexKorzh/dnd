@@ -6,13 +6,11 @@ export default class TreeDropTarget extends DropTarget {
     }
 
     _showHoverIndication () {
-        this._targetElem && this._targetElem.classList.add('hover');
+        this.addIndicationClass('hover');
     }
 
     _hideHoverIndication () {
-        this._targetElem && this._targetElem.classList.remove('hover');
-        this._targetElem && this._targetElem.classList.remove('above');
-        this._targetElem && this._targetElem.classList.remove('under');
+        this.removeIndicationClass(['under', 'hover', 'above']);
     }
 
     _getTargetElem (avatar, event) {
@@ -35,12 +33,28 @@ export default class TreeDropTarget extends DropTarget {
         return target;
     }
 
-    addBorder (border) {
-        this._targetElem && this._targetElem.classList.add(border);
+    addIndicationClass (className) {
+        if (className) {
+            if (Array.isArray(className)) {
+                className.forEach(item => {
+                    this._targetElem && this._targetElem.classList.add(item);
+                });
+            } else {
+                this._targetElem && this._targetElem.classList.add(className);
+            }
+        }
     }
 
-    removeBorder (border) {
-        this._targetElem && this._targetElem.classList.remove(border);
+    removeIndicationClass (className) {
+        if (className) {
+            if (Array.isArray(className)) {
+                className.forEach(item => {
+                    this._targetElem && this._targetElem.classList.remove(item);
+                });
+            } else {
+                this._targetElem && this._targetElem.classList.remove(className);
+            }
+        }
     }
 
     onDragMove(avatar, event) {
@@ -49,18 +63,22 @@ export default class TreeDropTarget extends DropTarget {
         if (this._targetElem) {
             const clientY = event.clientY;
 
-            const {top, height} = this._targetElem.getBoundingClientRect();
+            const { top, height } = this._targetElem.getBoundingClientRect();
 
-            const elementMiddle = top + height / 2;
+            const elementPart = height / 3;
+            const middle = top + height / 2;
+            const above = middle - elementPart;
+            const under = middle + elementPart;
 
-            if (clientY < elementMiddle) {
-                // upwards
-                this.removeBorder('under');
-                this.addBorder('above');
-            } else {
-                // downwards
-                this.removeBorder('above');
-                this.addBorder('under');
+            if (clientY < above) {
+                this.removeIndicationClass('under');
+                this.addIndicationClass('above');
+            } else if (clientY > under) {
+                this.removeIndicationClass('above');
+                this.addIndicationClass('under');
+            } else if (clientY > above && clientY < under) {
+                this.removeIndicationClass(['above', 'under']);
+                this.addIndicationClass('middle');
             }
         }
     }
