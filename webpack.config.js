@@ -1,24 +1,30 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const DIST_DIR = path.resolve(__dirname, 'lib');
+
 module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'lib'),
+        path: DIST_DIR,
         filename: 'index.js',
         publicPath: '/lib/',
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015']
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [ 'style-loader', 'css-loader' ]
             }
         ]
-    },
+    }
 };

@@ -1,4 +1,4 @@
-import DragZone from './components/DragZone/DragZone';
+import DragZone from './DragZone';
 import TreeDragAvatar from './TreeDragAvatar';
 
 export default class TreeDragZone extends DragZone {

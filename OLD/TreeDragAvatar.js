@@ -1,5 +1,5 @@
 import DragAvatar from './DragAvatar';
-import {getCoords} from './components/utils';
+import {getCoords} from './utils';
 
 export default class TreeDragAvatar extends DragAvatar {
     constructor (dragZone, dragElem) {
