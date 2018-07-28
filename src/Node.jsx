@@ -3,12 +3,16 @@ import DnDHoc from './components/DnDHoc';
 import DragZoneHoc from './components/DragZoneHoc';
 import DropTargetHoc from './components/DropTargetHoc';
 
-
-const forwardedRef = React.createRef();
-
 class Node extends Component {
     constructor(props) {
         super(props);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.dnd.dropTargetElement !== this.props.dnd.dropTargetElement) {
+            console.log('RECIVED new dragZoneElement', this.props.dnd.dragZoneElement);
+            console.log('RECIVED new dropTargetElement', this.props.dnd.dropTargetElement);
+        }
     }
 
     setRef = elem => {
@@ -17,8 +21,10 @@ class Node extends Component {
     };
 
     render() {
-        let {node, children, dnd, dragZoneRef, dropTargetRef} = this.props,
+        let {node, children, dnd} = this.props,
             Tag = node.nodeType;
+
+        console.log(dnd);
 
         return (
             <React.Fragment>
@@ -29,6 +35,7 @@ class Node extends Component {
                         node.textContent
                             ? <span
                                 className={node.attributes.class}
+                                data-node-id={node.id}
                                 ref={this.setRef}
                             >
                             {node.textContent}
@@ -41,4 +48,4 @@ class Node extends Component {
     }
 };
 
-export default DropTargetHoc(DragZoneHoc(Node));
+export default DnDHoc(DropTargetHoc(DragZoneHoc(Node)));

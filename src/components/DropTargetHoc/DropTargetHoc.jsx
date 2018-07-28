@@ -1,42 +1,34 @@
 import React from 'react';
+import DropTarget from '../DropTarget';
 
-export default function DropZoneHoc (Component) {
-    class DropTargetComponent extends React.Component {
+export default function DropTargetHoc (Component) {
+    class DropTargetComponent extends DropTarget {
         constructor (props) {
             super(props);
-
-            if (props.elem !== null && props.elem) props.elem.dropTarget = this;
-
-            this._elem = props.elem;
-            /**
-             * Подэлемент, над которым в настоящий момент находится аватар
-             */
-            this._targetElem = null;
         }
-
-        componentDidMount () {
-            this.initDropTarget(this._elem);
-        }
-
-        /**
-         * Инициализация элемента (получение ссылки на DOM - элемент)
-         * @param elem DOM-элемент, к которому привязана зона
-         */
-        initDropTarget (elem) {
-            if (elem) {
-                elem.dropTarget = this;
-                this._elem = elem;
-                this._targetElem = null;
-            }
-        };
-
         /**
          * Возвращает DOM-подэлемент, над которым сейчас пролетает аватар
          *
          * @return DOM-элемент, на который можно положить или undefined
          */
         _getTargetElem (avatar, event) {
-            return this._elem;
+            let target = avatar.getTargetElem();
+
+            if (!target.closest('.droppable')) {
+                return;
+            }
+
+            // проверить, может быть перенос узла внутрь самого себя или в себя?
+            let elemToMove = avatar.getDragInfo(event).dragZoneElem.parentNode;
+
+            let elem = target;
+
+            while (elem) {
+                if (elem === elemToMove) return; // попытка перенести родителя в потомка
+                elem = elem.parentNode;
+            }
+
+            return target;
         };
 
         addIndicationClass (className) {
@@ -68,15 +60,13 @@ export default function DropZoneHoc (Component) {
          * Вызывается, когда аватар уходит с текущего this._targetElem
          */
         _hideHoverIndication (avatar) {
-            /* override */
-            this.removeIndicationClass('hover');
+            this.removeIndicationClass(['under', 'hover', 'above', 'middle']);
         };
         /**
          * Показать индикацию переноса
          * Вызывается, когда аватар пришел на новый this._targetElem
          */
         _showHoverIndication (avatar) {
-            /* override */
             this.addIndicationClass('hover');
         };
 
@@ -91,7 +81,36 @@ export default function DropZoneHoc (Component) {
                 this._targetElem = newTargetElem;
                 this._showHoverIndication(avatar);
             }
+
+            this.hoverTreeDropTarget();
         };
+
+        hoverTreeDropTarget () {
+            if (this._targetElem) {
+                const clientY = event.clientY;
+
+                const { top, height } = this._targetElem.getBoundingClientRect();
+
+                const elementPart = height / 3;
+                const middle = top + height / 2;
+                const above = middle - elementPart;
+                const under = middle + elementPart;
+
+                if (clientY < above) {
+                    this.removeIndicationClass(['under', 'middle']);
+                    this.addIndicationClass('above');
+                    this.dropPlace = 'above';
+                } else if (clientY > under) {
+                    this.removeIndicationClass(['above', 'middle']);
+                    this.addIndicationClass('under');
+                    this.dropPlace = 'under';
+                } else if (clientY > above && clientY < under) {
+                    this.removeIndicationClass(['above', 'under']);
+                    this.addIndicationClass('middle');
+                    this.dropPlace = 'middle';
+                }
+            }
+        }
 
         /**
          * Завершение переноса.
@@ -107,31 +126,26 @@ export default function DropZoneHoc (Component) {
          *  снять текущую индикацию переноса
          *  обнулить this._targetElem
          */
-        onDragEnd (avatar, event) {
-            this._hideHoverIndication(avatar);
-            this._targetElem = null;
-
+        onDragEnd(avatar, event) {
             if (!this._targetElem) {
                 // перенос закончился вне подходящей точки приземления
                 avatar.onDragCancel();
 
                 return;
             }
-        };
 
-        /**
-         * Вход аватара в DropTarget
-         */
-        onDragEnter (fromDropTarget, avatar, event) {
-            const coords = event.target.getBoundingClientRect();
-            const Y = coords.top + coords.height / 2;
-        };
-
-        /**
-         * Выход аватара из DropTarget
-         */
-        onDragLeave (toDropTarget, avatar, event) {
             this._hideHoverIndication();
+            // получить информацию об объекте переноса
+            let avatarInfo = avatar.getDragInfo(event);
+
+            this.props.dnd.onDragEnd({
+                dragZoneElement: avatarInfo.dragZone._elem,
+                dropTargetElement: this._targetElem,
+                avatar: avatar,
+            });
+
+            avatar.onDragEnd(); // аватар больше не нужен, перенос успешен
+
             this._targetElem = null;
         };
 
@@ -140,7 +154,11 @@ export default function DropZoneHoc (Component) {
         };
 
         render () {
-            return <Component dropTargetRef = {this.setRef} {...this.props} />;
+            return <Component
+                dropTargetRef={this.setRef}
+                {...this.state}
+                {...this.props}
+            />;
         }
     }
 

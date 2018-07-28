@@ -10,7 +10,16 @@ export default class DnDProvider extends Component {
             dropTarget: props.dropTarget,
             avatar: props.avatar,
             downX: props.downX,
-            downY: props.downY
+            downY: props.downY,
+            dragZoneElement: null,
+            dropTargetElement: null,
+            onDragEnd: info => {
+                this.setState({
+                    dragZoneElement: info.dragZoneElement,
+                    dropTargetElement: info.dropTargetElement,
+                    avatar: info.avatar,
+                });
+            }
         };
 
         this.onDragStart = this.onDragStart.bind(this);
@@ -167,7 +176,9 @@ export default class DnDProvider extends Component {
 
     render () {
         return (
-            <DnDContext.Provider value = {this.state}>
+            <DnDContext.Provider
+                value = {this.state}
+            >
                 { this.props.children }
             </DnDContext.Provider>
 

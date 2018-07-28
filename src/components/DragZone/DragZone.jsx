@@ -5,21 +5,25 @@ import React, { Component } from 'react';
  * @param elem DOM-элемент, к которому привязана зона
  */
 export default class DragZone extends Component {
-    constructor(elem) {
-        super();
+    constructor(props) {
+        super(props);
 
-        if (elem !== null) elem.dragZone = this;
-        this._elem = elem;
+        if (props.elem !== null && props.elem) props.elem.dragZone = this;
+        this._elem = props.elem;
     }
 
+    componentDidMount () {
+        this.initDragZone(this._elem);
+    }
     /**
      * Инициализация элемента (получение ссылки на DOM - элемент)
      * @param elem DOM-элемент, к которому привязана зона
      */
-
     initDragZone (elem) {
-        this._elem = elem;
-        elem.dragZone = this;
+        if (elem) {
+            this._elem = elem;
+            elem.dragZone = this;
+        }
     }
 
     /**

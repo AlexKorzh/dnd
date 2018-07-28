@@ -5,7 +5,15 @@ export default function DnDHoc (Component) {
     return function DnDComponent (props) {
         return (
             <DnDContext.Consumer>
-                {dnd => <Component {...props} dnd={dnd} />}
+                {
+                    (dnd) => {
+                        return <Component
+                            {...props}
+                            dnd = { dnd }
+                            onDragEnd = { dnd.onDragEnd }
+                        />
+                    }
+                }
             </DnDContext.Consumer>
         );
     };

@@ -4,16 +4,22 @@ import React, { Component } from 'react';
  * Занимается индикацией передвижения по себе, добавлением в себя
  */
 export default class DropTarget extends Component {
-    constructor (elem) {
-        super();
+    constructor (props) {
+        super(props);
 
-        if (elem !== null) elem.dropTarget = this;
+        if (props.elem !== null && props.elem) {
+            props.elem.dropTarget = this;
+        }
 
-        this._elem = elem;
+        this._elem = props.elem;
         /**
          * Подэлемент, над которым в настоящий момент находится аватар
          */
         this._targetElem = null;
+    }
+
+    componentDidMount () {
+        this.initDropTarget(this._elem);
     }
 
     /**
@@ -21,9 +27,11 @@ export default class DropTarget extends Component {
      * @param elem DOM-элемент, к которому привязана зона
      */
     initDropTarget (elem) {
-        elem.dropTarget = this;
-        this._elem = elem;
-        this._targetElem = null;
+        if (elem) {
+            elem.dropTarget = this;
+            this._elem = elem;
+            this._targetElem = null;
+        }
     };
 
     /**
