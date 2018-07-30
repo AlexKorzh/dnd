@@ -2,7 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
-const LIB_DIR = path.resolve(__dirname, 'lib');
+const LIB_DIR = path.resolve(__dirname, 'dist');
 
 module.exports = merge(common, {
     mode: 'production',
