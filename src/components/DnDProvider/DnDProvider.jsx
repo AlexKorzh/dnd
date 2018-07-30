@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import DnDContext from '../DnDContext';
+import { DnDContext } from '../DnDContext';
 
-export default class DnDProvider extends Component {
+class DnDProvider extends Component {
     constructor (props) {
         super(props);
 
@@ -193,3 +193,5 @@ DnDProvider.defaultProps = {
     downX: 0,
     downY: 0
 };
+
+export { DnDProvider };

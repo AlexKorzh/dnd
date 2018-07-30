@@ -1,7 +1,7 @@
 import React from 'react';
-import DnDContext from '../DnDContext';
+import { DnDContext } from '../DnDContext';
 
-export default function DnDHoc (Component) {
+function DnDHoc (Component) {
     return function DnDComponent (props) {
         return (
             <DnDContext.Consumer>
@@ -18,3 +18,5 @@ export default function DnDHoc (Component) {
         );
     };
 }
+
+export { DnDHoc };

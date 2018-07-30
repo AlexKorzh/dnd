@@ -13,4 +13,7 @@ module.exports = merge(common, {
         filename: 'index.js',
         publicPath: '/'
     },
+    devServer: {
+        contentBase: './public',
+    }
 });

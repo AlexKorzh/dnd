@@ -1,5 +1,5 @@
 import React from 'react';
-import DropTarget from '../DropTarget';
+import { DropTarget } from '../DropTarget';
 
 export default function DropTargetHoc (Component) {
     class DropTargetComponent extends DropTarget {

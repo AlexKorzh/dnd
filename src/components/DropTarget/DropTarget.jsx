@@ -3,7 +3,7 @@ import React, { Component } from 'react';
  * Зона, в которую объекты можно класть
  * Занимается индикацией передвижения по себе, добавлением в себя
  */
-export default class DropTarget extends Component {
+class DropTarget extends Component {
     constructor (props) {
         super(props);
 
@@ -106,3 +106,5 @@ export default class DropTarget extends Component {
         this._targetElem = null;
     };
 }
+
+export { DropTarget };

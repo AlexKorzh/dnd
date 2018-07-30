@@ -12,15 +12,16 @@ module.exports = merge(common, {
     output: {
         path: LIB_DIR,
         filename: '[name].js',
-        library: 'RelateDnD'
+        library: '',
+        libraryTarget: 'commonjs'
     },
-    // exclude react from the bundle
     resolve: {
         alias: {
             'react': path.resolve(__dirname, './node_modules/react'),
             'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
         }
     },
+    // exclude react from the bundle
     externals: {
         react: {
             commonjs: "react",

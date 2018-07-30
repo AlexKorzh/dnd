@@ -1,3 +1,3 @@
-import DropTarget from './DropTarget.jsx';
+import { DropTarget } from './DropTarget.jsx';
 
-export default DropTarget;
+export { DropTarget };

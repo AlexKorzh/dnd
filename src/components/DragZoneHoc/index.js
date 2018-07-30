@@ -1,3 +1,3 @@
-import DragZoneHoc from './DragZoneHoc.jsx';
+import { DragZoneHoc } from './DragZoneHoc.jsx';
 
-export default DragZoneHoc;
+export { DragZoneHoc };
