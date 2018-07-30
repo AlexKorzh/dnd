@@ -3,8 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DnDProvider = undefined;
 
 var _DnDProvider = require('./DnDProvider.jsx');
 
-exports.DnDProvider = _DnDProvider.DnDProvider;
+Object.defineProperty(exports, 'DnDProvider', {
+  enumerable: true,
+  get: function get() {
+    return _DnDProvider.DnDProvider;
+  }
+});

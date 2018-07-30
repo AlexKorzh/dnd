@@ -3,8 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DragAvatar = undefined;
 
 var _DragAvatar = require('./DragAvatar.jsx');
 
-exports.DragAvatar = _DragAvatar.DragAvatar;
+Object.defineProperty(exports, 'DragAvatar', {
+  enumerable: true,
+  get: function get() {
+    return _DragAvatar.DragAvatar;
+  }
+});

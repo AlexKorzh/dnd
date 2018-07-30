@@ -1,3 +1,1 @@
-import { DnDProvider } from './DnDProvider.jsx';
-
-export { DnDProvider };
+export { DnDProvider } from './DnDProvider.jsx';

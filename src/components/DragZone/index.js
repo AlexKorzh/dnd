@@ -1,3 +1,1 @@
-import { DragZone } from './DragZone.jsx';
-
-export { DragZone };
+export { DragZone } from './DragZone.jsx';

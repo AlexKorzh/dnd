@@ -3,8 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DragZoneHoc = undefined;
 
 var _DragZoneHoc = require('./DragZoneHoc.jsx');
 
-exports.DragZoneHoc = _DragZoneHoc.DragZoneHoc;
+Object.defineProperty(exports, 'DragZoneHoc', {
+  enumerable: true,
+  get: function get() {
+    return _DragZoneHoc.DragZoneHoc;
+  }
+});
