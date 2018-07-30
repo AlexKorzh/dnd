@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _DnDProvider = require('./DnDProvider.jsx');
+var _DnDProvider = require('./DnDProvider');
 
 var _DnDProvider2 = _interopRequireDefault(_DnDProvider);
 

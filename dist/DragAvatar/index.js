@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _DragAvatar = require('./DragAvatar.jsx');
+var _DragAvatar = require('./DragAvatar');
 
 var _DragAvatar2 = _interopRequireDefault(_DragAvatar);
 

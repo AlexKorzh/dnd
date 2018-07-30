@@ -1,3 +1,3 @@
-import DnDProvider from './DnDProvider.jsx';
+import DnDProvider from './DnDProvider';
 
 export default DnDProvider;

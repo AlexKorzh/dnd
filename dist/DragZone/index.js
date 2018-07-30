@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _DragZone = require('./DragZone.jsx');
+var _DragZone = require('./DragZone');
 
 var _DragZone2 = _interopRequireDefault(_DragZone);
 

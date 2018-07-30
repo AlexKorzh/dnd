@@ -1,3 +1,3 @@
-import DragAvatar from './DragAvatar.jsx';
+import DragAvatar from './DragAvatar';
 
 export default DragAvatar;

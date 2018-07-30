@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import DnDHoc from './components/DnDHoc';
-import DragZoneHoc from './components/DragZoneHoc';
-import DropTargetHoc from './components/DropTargetHoc';
+import DnDHoc from '../dist/DnDHoc';
+import DragZoneHoc from '../dist/DragZoneHoc';
+import DropTargetHoc from '../dist/DropTargetHoc';
 
 class Node extends Component {
     constructor(props) {

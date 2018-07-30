@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _DropTargetHoc = require('./DropTargetHoc.jsx');
+var _DropTargetHoc = require('./DropTargetHoc');
 
 var _DropTargetHoc2 = _interopRequireDefault(_DropTargetHoc);
 
