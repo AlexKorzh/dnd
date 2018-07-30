@@ -1,7 +1,7 @@
 import React from 'react';
-import { DropTarget } from '../DropTarget';
+import DropTarget from '../DropTarget';
 
-function DropTargetHoc (Component) {
+export default function DropTargetHoc (Component) {
     class DropTargetComponent extends DropTarget {
         constructor (props) {
             super(props);
@@ -164,5 +164,3 @@ function DropTargetHoc (Component) {
 
     return DropTargetComponent;
 }
-
-export { DropTargetHoc };

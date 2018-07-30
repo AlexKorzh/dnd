@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.DnDProvider = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -12,6 +11,8 @@ var _react = require('react');
 var _react2 = _interopRequireDefault(_react);
 
 var _DnDContext = require('../DnDContext');
+
+var _DnDContext2 = _interopRequireDefault(_DnDContext);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -218,7 +219,7 @@ var DnDProvider = function (_Component) {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                _DnDContext.DnDContext.Provider,
+                _DnDContext2.default.Provider,
                 {
                     value: this.state
                 },
@@ -230,6 +231,9 @@ var DnDProvider = function (_Component) {
     return DnDProvider;
 }(_react.Component);
 
+exports.default = DnDProvider;
+
+
 DnDProvider.defaultProps = {
     dragZone: null,
     dropTarget: null,
@@ -237,5 +241,3 @@ DnDProvider.defaultProps = {
     downX: 0,
     downY: 0
 };
-
-exports.DnDProvider = DnDProvider;

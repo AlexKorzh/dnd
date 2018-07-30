@@ -6,9 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _DropTargetHoc = require('./DropTargetHoc.jsx');
 
-Object.defineProperty(exports, 'DropTargetHoc', {
-  enumerable: true,
-  get: function get() {
-    return _DropTargetHoc.DropTargetHoc;
-  }
-});
+var _DropTargetHoc2 = _interopRequireDefault(_DropTargetHoc);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _DropTargetHoc2.default;

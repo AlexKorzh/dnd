@@ -6,9 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _DragAvatar = require('./DragAvatar.jsx');
 
-Object.defineProperty(exports, 'DragAvatar', {
-  enumerable: true,
-  get: function get() {
-    return _DragAvatar.DragAvatar;
-  }
-});
+var _DragAvatar2 = _interopRequireDefault(_DragAvatar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _DragAvatar2.default;

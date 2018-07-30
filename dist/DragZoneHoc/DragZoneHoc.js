@@ -3,11 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.DragZoneHoc = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+exports.default = DragZoneHoc;
 
 var _react = require('react');
 
@@ -15,7 +16,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _DragAvatar = require('../DragAvatar');
 
+var _DragAvatar2 = _interopRequireDefault(_DragAvatar);
+
 var _DragZone2 = require('../DragZone');
+
+var _DragZone3 = _interopRequireDefault(_DragZone2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53,7 +58,7 @@ function DragZoneHoc(Component) {
             key: '_makeAvatar',
             value: function _makeAvatar() {
                 /* override */
-                return new _DragAvatar.DragAvatar({ dragZone: this, dragElem: this._elem });
+                return new _DragAvatar2.default({ dragZone: this, dragElem: this._elem });
             }
         }, {
             key: 'render',
@@ -65,9 +70,7 @@ function DragZoneHoc(Component) {
         }]);
 
         return DragZoneComponent;
-    }(_DragZone2.DragZone);
+    }(_DragZone3.default);
 
     return DragZoneComponent;
 }
-
-exports.DragZoneHoc = DragZoneHoc;

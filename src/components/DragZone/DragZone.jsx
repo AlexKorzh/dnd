@@ -4,7 +4,7 @@ import React, { Component } from 'react';
  * Умеет обрабатывать начало переноса на себе и создавать "аватар"
  * @param elem DOM-элемент, к которому привязана зона
  */
-class DragZone extends Component {
+export default class DragZone extends Component {
     constructor(props) {
         super(props);
 
@@ -56,5 +56,3 @@ class DragZone extends Component {
         return avatar;
     };
 }
-
-export { DragZone };

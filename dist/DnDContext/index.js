@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DnDContext = undefined;
 
 var _react = require('react');
 
@@ -13,4 +12,4 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var DnDContext = _react2.default.createContext();
 
-exports.DnDContext = DnDContext;
+exports.default = DnDContext;

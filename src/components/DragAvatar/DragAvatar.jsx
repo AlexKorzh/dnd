@@ -7,7 +7,7 @@ import { getElementUnderClientXY, getCoords } from '../utils';
  * Также аватар может быть клонированным элементом
  * Также аватар может быть иконкой и вообще чем угодно.
  */
-class DragAvatar extends Component {
+export default class DragAvatar extends Component {
     constructor (props) {
         super(props);
         /** "родительская" зона переноса */
@@ -114,6 +114,4 @@ class DragAvatar extends Component {
         this._elem.parentNode.removeChild(this._elem);
     }
 }
-
-export { DragAvatar };
 

@@ -3,17 +3,20 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.DropTargetHoc = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+exports.default = DropTargetHoc;
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 var _DropTarget2 = require('../DropTarget');
+
+var _DropTarget3 = _interopRequireDefault(_DropTarget2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -215,9 +218,7 @@ function DropTargetHoc(Component) {
         }]);
 
         return DropTargetComponent;
-    }(_DropTarget2.DropTarget);
+    }(_DropTarget3.default);
 
     return DropTargetComponent;
 }
-
-exports.DropTargetHoc = DropTargetHoc;

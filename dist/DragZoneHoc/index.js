@@ -6,9 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _DragZoneHoc = require('./DragZoneHoc.jsx');
 
-Object.defineProperty(exports, 'DragZoneHoc', {
-  enumerable: true,
-  get: function get() {
-    return _DragZoneHoc.DragZoneHoc;
-  }
-});
+var _DragZoneHoc2 = _interopRequireDefault(_DragZoneHoc);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _DragZoneHoc2.default;
