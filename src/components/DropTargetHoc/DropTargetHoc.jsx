@@ -140,7 +140,7 @@ export default function DropTargetHoc (Component) {
 
             this.props.dnd.onDragEnd({
                 dragZoneElement: avatarInfo.dragZone._elem,
-                dropTargetElement: this._targetElem,
+                dropTargetElement: this._elem,
                 avatar: avatar,
             });
 

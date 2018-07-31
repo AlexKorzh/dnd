@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import DnDHoc from '../dist/DnDHoc';
-import DragZoneHoc from '../dist/DragZoneHoc';
-import DropTargetHoc from '../dist/DropTargetHoc';
+import DnDHoc from './components/DnDHoc';
+import DragZoneHoc from './components/DragZoneHoc';
+import DropTargetHoc from './components/DropTargetHoc';
 
 class Node extends Component {
     constructor(props) {
@@ -33,13 +33,15 @@ class Node extends Component {
                 >
                     {
                         node.textContent
-                            ? <span
+                            ?
+                            <span className='test'>
+                            <span
                                 className={node.attributes.class}
                                 data-node-id={node.id}
                                 ref={this.setRef}
                             >
                             {node.textContent}
-                        </span> : null
+                        </span></span> : null
                     }
                     {children}
                 </Tag>
