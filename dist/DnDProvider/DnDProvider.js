@@ -42,6 +42,7 @@ var DnDProvider = function (_Component) {
                 _this.setState({
                     dragZoneElement: info.dragZoneElement,
                     dropTargetElement: info.dropTargetElement,
+                    dropPlace: info.dropPlace,
                     avatar: info.avatar
                 });
             }
