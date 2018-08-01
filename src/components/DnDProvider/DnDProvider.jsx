@@ -17,7 +17,8 @@ export default class DnDProvider extends Component {
                 this.setState({
                     dragZoneElement: info.dragZoneElement,
                     dropTargetElement: info.dropTargetElement,
-                    avatar: info.avatar,
+                    dropPlace: info.dropPlace,
+                    avatar: info.avatar
                 });
             }
         };
