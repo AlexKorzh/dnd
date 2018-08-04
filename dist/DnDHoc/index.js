@@ -26,7 +26,8 @@ function DnDHoc(Component) {
             function (dnd) {
                 return _react2.default.createElement(Component, _extends({}, props, {
                     dnd: dnd,
-                    onDragEnd: dnd.onDragEnd
+                    onDragEnd: dnd.onDragEnd,
+                    resetState: dnd.resetState
                 }));
             }
         );

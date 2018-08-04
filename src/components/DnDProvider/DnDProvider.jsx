@@ -20,6 +20,9 @@ export default class DnDProvider extends Component {
                     dropPlace: info.dropPlace,
                     avatar: info.avatar
                 });
+            },
+            resetState: () => {
+                this.cleanUp();
             }
         };
 
@@ -89,11 +92,11 @@ export default class DnDProvider extends Component {
             if (!avatar) {
                 // не получилось, значит перенос продолжать нельзя
                 this.cleanUp(); // очистить приватные переменные, связанные с переносом
-
-                return this;
             } else {
                 this.setState({ avatar });
             }
+
+            return this;
         }
 
         // отобразить перенос объекта, перевычислить текущий элемент под курсором

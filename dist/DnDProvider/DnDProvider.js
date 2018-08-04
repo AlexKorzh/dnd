@@ -45,6 +45,9 @@ var DnDProvider = function (_Component) {
                     dropPlace: info.dropPlace,
                     avatar: info.avatar
                 });
+            },
+            resetState: function resetState() {
+                _this.cleanUp();
             }
         };
 
@@ -124,11 +127,11 @@ var DnDProvider = function (_Component) {
                 if (!avatar) {
                     // не получилось, значит перенос продолжать нельзя
                     this.cleanUp(); // очистить приватные переменные, связанные с переносом
-
-                    return this;
                 } else {
                     this.setState({ avatar: avatar });
                 }
+
+                return this;
             }
 
             // отобразить перенос объекта, перевычислить текущий элемент под курсором

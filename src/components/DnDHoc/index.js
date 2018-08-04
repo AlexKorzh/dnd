@@ -11,6 +11,7 @@ export default function DnDHoc (Component) {
                             {...props}
                             dnd = { dnd }
                             onDragEnd = { dnd.onDragEnd }
+                            resetState = { dnd.resetState }
                         />
                     }
                 }
