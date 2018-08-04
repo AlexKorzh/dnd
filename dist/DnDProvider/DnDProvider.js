@@ -221,9 +221,7 @@ var DnDProvider = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 _DnDContext2.default.Provider,
-                {
-                    value: this.state
-                },
+                { value: this.state },
                 this.props.children
             );
         }

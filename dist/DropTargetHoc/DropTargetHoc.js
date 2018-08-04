@@ -26,19 +26,23 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function DropTargetHoc(Component) {
+function DropTargetHoc(Component, dropTargetConnector) {
     var DropTargetComponent = function (_DropTarget) {
         _inherits(DropTargetComponent, _DropTarget);
 
         function DropTargetComponent(props) {
             _classCallCheck(this, DropTargetComponent);
 
+            // inject dropTargetConnector
             var _this = _possibleConstructorReturn(this, (DropTargetComponent.__proto__ || Object.getPrototypeOf(DropTargetComponent)).call(this, props));
 
             _this.setRef = function (el) {
                 _this._elem = el;
             };
 
+            if (typeof dropTargetConnector === 'function') {
+                _this.dropTargetConnector = new dropTargetConnector(props);
+            }
             return _this;
         }
         /**
@@ -108,7 +112,9 @@ function DropTargetHoc(Component) {
         }, {
             key: '_hideHoverIndication',
             value: function _hideHoverIndication(avatar) {
-                this.removeIndicationClass(['under', 'hover', 'above', 'middle']);
+                if (this.dropTargetConnector) {
+                    this.dropTargetConnector.hideHoverIndication(this);
+                }
             }
         }, {
             key: '_showHoverIndication',
@@ -118,7 +124,9 @@ function DropTargetHoc(Component) {
              * Вызывается, когда аватар пришел на новый this._targetElem
              */
             value: function _showHoverIndication(avatar) {
-                this.addIndicationClass('hover');
+                if (this.dropTargetConnector) {
+                    this.dropTargetConnector.showHoverIndication(this);
+                }
             }
         }, {
             key: 'onDragMove',
@@ -136,38 +144,13 @@ function DropTargetHoc(Component) {
                     this._showHoverIndication(avatar);
                 }
 
-                this.hoverTreeDropTarget();
-            }
-        }, {
-            key: 'hoverTreeDropTarget',
-            value: function hoverTreeDropTarget() {
-                if (this._targetElem) {
-                    var clientY = event.clientY;
-
-                    var _targetElem$getBoundi = this._targetElem.getBoundingClientRect(),
-                        top = _targetElem$getBoundi.top,
-                        height = _targetElem$getBoundi.height;
-
-                    var elementPart = height / 3;
-                    var middle = top + height / 2;
-                    var above = middle - elementPart;
-                    var under = middle + elementPart;
-
-                    if (clientY < above) {
-                        this.removeIndicationClass(['under', 'middle']);
-                        this.addIndicationClass('above');
-                        this.dropPlace = 'above';
-                    } else if (clientY > under) {
-                        this.removeIndicationClass(['above', 'middle']);
-                        this.addIndicationClass('under');
-                        this.dropPlace = 'under';
-                    } else if (clientY > above && clientY < under) {
-                        this.removeIndicationClass(['above', 'under']);
-                        this.addIndicationClass('middle');
-                        this.dropPlace = 'middle';
-                    }
+                if (this.dropTargetConnector) {
+                    this.dropTargetConnector.onDragMove(this, avatar, event);
                 }
             }
+        }, {
+            key: 'onDragEnd',
+
 
             /**
              * Завершение переноса.
@@ -183,9 +166,6 @@ function DropTargetHoc(Component) {
              *  снять текущую индикацию переноса
              *  обнулить this._targetElem
              */
-
-        }, {
-            key: 'onDragEnd',
             value: function onDragEnd(avatar, event) {
                 if (!this._targetElem) {
                     // перенос закончился вне подходящей точки приземления
@@ -196,14 +176,11 @@ function DropTargetHoc(Component) {
 
                 this._hideHoverIndication();
                 // получить информацию об объекте переноса
-                var avatarInfo = avatar.getDragInfo(event);
+                // let avatarInfo = avatar.getDragInfo(event);
 
-                this.props.dnd.onDragEnd({
-                    dragZoneElement: avatarInfo.dragZone._elem,
-                    dropTargetElement: this._elem,
-                    dropPlace: this.dropPlace,
-                    avatar: avatar
-                });
+                if (this.dropTargetConnector) {
+                    this.dropTargetConnector.onDragEnd(this, avatar, event);
+                }
 
                 avatar.onDragEnd(); // аватар больше не нужен, перенос успешен
 

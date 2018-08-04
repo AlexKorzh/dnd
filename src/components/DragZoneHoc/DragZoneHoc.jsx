@@ -1,7 +1,6 @@
 import React from 'react';
 import DragAvatar from '../DragAvatar';
 import DragZone from '../DragZone';
-// import { DnDContext } from '../DnDContext';
 
 export default function DragZoneHoc (Component) {
     class DragZoneComponent extends DragZone {

@@ -177,9 +177,7 @@ export default class DnDProvider extends Component {
 
     render () {
         return (
-            <DnDContext.Provider
-                value = {this.state}
-            >
+            <DnDContext.Provider value = {this.state}>
                 { this.props.children }
             </DnDContext.Provider>
 

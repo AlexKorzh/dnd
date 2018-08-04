@@ -1,10 +1,15 @@
 import React from 'react';
 import DropTarget from '../DropTarget';
 
-export default function DropTargetHoc (Component) {
+export default function DropTargetHoc (Component, dropTargetConnector) {
     class DropTargetComponent extends DropTarget {
         constructor (props) {
             super(props);
+
+            // inject dropTargetConnector
+            if (typeof dropTargetConnector === 'function') {
+                this.dropTargetConnector = new dropTargetConnector(props);
+            }
         }
         /**
          * Возвращает DOM-подэлемент, над которым сейчас пролетает аватар
@@ -60,14 +65,18 @@ export default function DropTargetHoc (Component) {
          * Вызывается, когда аватар уходит с текущего this._targetElem
          */
         _hideHoverIndication (avatar) {
-            this.removeIndicationClass(['under', 'hover', 'above', 'middle']);
+            if (this.dropTargetConnector) {
+                this.dropTargetConnector.hideHoverIndication(this);
+            }
         };
         /**
          * Показать индикацию переноса
          * Вызывается, когда аватар пришел на новый this._targetElem
          */
         _showHoverIndication (avatar) {
-            this.addIndicationClass('hover');
+            if (this.dropTargetConnector) {
+                this.dropTargetConnector.showHoverIndication(this);
+            }
         };
 
         /**
@@ -82,35 +91,10 @@ export default function DropTargetHoc (Component) {
                 this._showHoverIndication(avatar);
             }
 
-            this.hoverTreeDropTarget();
-        };
-
-        hoverTreeDropTarget () {
-            if (this._targetElem) {
-                const clientY = event.clientY;
-
-                const { top, height } = this._targetElem.getBoundingClientRect();
-
-                const elementPart = height / 3;
-                const middle = top + height / 2;
-                const above = middle - elementPart;
-                const under = middle + elementPart;
-
-                if (clientY < above) {
-                    this.removeIndicationClass(['under', 'middle']);
-                    this.addIndicationClass('above');
-                    this.dropPlace = 'above';
-                } else if (clientY > under) {
-                    this.removeIndicationClass(['above', 'middle']);
-                    this.addIndicationClass('under');
-                    this.dropPlace = 'under';
-                } else if (clientY > above && clientY < under) {
-                    this.removeIndicationClass(['above', 'under']);
-                    this.addIndicationClass('middle');
-                    this.dropPlace = 'middle';
-                }
+            if (this.dropTargetConnector) {
+                this.dropTargetConnector.onDragMove(this, avatar, event);
             }
-        }
+        };
 
         /**
          * Завершение переноса.
@@ -136,14 +120,11 @@ export default function DropTargetHoc (Component) {
 
             this._hideHoverIndication();
             // получить информацию об объекте переноса
-            let avatarInfo = avatar.getDragInfo(event);
+            // let avatarInfo = avatar.getDragInfo(event);
 
-            this.props.dnd.onDragEnd({
-                dragZoneElement: avatarInfo.dragZone._elem,
-                dropTargetElement: this._elem,
-                dropPlace: this.dropPlace,
-                avatar: avatar,
-            });
+            if (this.dropTargetConnector) {
+                this.dropTargetConnector.onDragEnd(this, avatar, event);
+            }
 
             avatar.onDragEnd(); // аватар больше не нужен, перенос успешен
 

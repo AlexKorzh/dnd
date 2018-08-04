@@ -3,6 +3,58 @@ import DnDHoc from './components/DnDHoc';
 import DragZoneHoc from './components/DragZoneHoc';
 import DropTargetHoc from './components/DropTargetHoc';
 
+class dropTargetConnector {
+    constructor(props) {
+        this.props = props;
+    }
+
+    showHoverIndication (dropTarget) {
+        dropTarget.addIndicationClass('hover');
+    }
+
+    hideHoverIndication (dropTarget) {
+        dropTarget.removeIndicationClass(['under', 'hover', 'above', 'middle']);
+    }
+
+    onDragEnd (dropTarget, avatar, event) {
+        let avatarInfo = avatar.getDragInfo(event);
+
+        dropTarget.props.dnd.onDragEnd({
+            dragZoneElement: avatarInfo.dragZone._elem,
+            dropTargetElement: dropTarget._elem,
+            dropPlace: dropTarget.dropPlace,
+            avatar: avatar,
+        });
+    }
+
+    onDragMove (dropTarget, avatar, event) {
+        if (dropTarget._targetElem) {
+            const clientY = event.clientY;
+
+            const { top, height } = dropTarget._targetElem.getBoundingClientRect();
+
+            const elementPart = height / 3;
+            const middle = top + height / 2;
+            const above = middle - elementPart;
+            const under = middle + elementPart;
+
+            if (clientY < above) {
+                dropTarget.removeIndicationClass(['under', 'middle']);
+                dropTarget.addIndicationClass('above');
+                dropTarget.dropPlace = 'above';
+            } else if (clientY > under) {
+                dropTarget.removeIndicationClass(['above', 'middle']);
+                dropTarget.addIndicationClass('under');
+                dropTarget.dropPlace = 'under';
+            } else if (clientY > above && clientY < under) {
+                dropTarget.removeIndicationClass(['above', 'under']);
+                dropTarget.addIndicationClass('middle');
+                dropTarget.dropPlace = 'middle';
+            }
+        }
+    }
+}
+
 class Node extends Component {
     constructor(props) {
         super(props);
@@ -21,10 +73,8 @@ class Node extends Component {
     };
 
     render() {
-        let {node, children, dnd} = this.props,
+        let  { node, children } = this.props,
             Tag = node.nodeType;
-
-        console.log(dnd);
 
         return (
             <React.Fragment>
@@ -50,4 +100,4 @@ class Node extends Component {
     }
 };
 
-export default DnDHoc(DropTargetHoc(DragZoneHoc(Node)));
+export default DnDHoc(DropTargetHoc(DragZoneHoc(Node), dropTargetConnector));
