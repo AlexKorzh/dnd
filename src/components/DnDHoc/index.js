@@ -6,12 +6,30 @@ export default function DnDHoc (Component) {
         return (
             <DnDContext.Consumer>
                 {
-                    (dnd) => {
+                    dnd => {
+                        const {
+                            dragZone,
+                            dropTarget,
+                            avatar,
+                            downX,
+                            downY,
+                            dragZoneElement,
+                            dropTargetElement,
+                            onDragEnd,
+                            resetState,
+                        } = dnd;
+
                         return <Component
                             {...props}
-                            dnd = { dnd }
-                            onDragEnd = { dnd.onDragEnd }
-                            resetState = { dnd.resetState }
+                            dragZone={dragZone}
+                            dropTarget={dropTarget}
+                            avatar={avatar}
+                            downX={downX}
+                            downY={downY}
+                            dragZoneElement={dragZoneElement}
+                            dropTargetElement={dropTargetElement}
+                            onDragEnd={onDragEnd}
+                            resetState={resetState}
                         />
                     }
                 }

@@ -24,10 +24,27 @@ function DnDHoc(Component) {
             _DnDContext2.default.Consumer,
             null,
             function (dnd) {
+                var dragZone = dnd.dragZone,
+                    dropTarget = dnd.dropTarget,
+                    avatar = dnd.avatar,
+                    downX = dnd.downX,
+                    downY = dnd.downY,
+                    dragZoneElement = dnd.dragZoneElement,
+                    dropTargetElement = dnd.dropTargetElement,
+                    onDragEnd = dnd.onDragEnd,
+                    resetState = dnd.resetState;
+
+
                 return _react2.default.createElement(Component, _extends({}, props, {
-                    dnd: dnd,
-                    onDragEnd: dnd.onDragEnd,
-                    resetState: dnd.resetState
+                    dragZone: dragZone,
+                    dropTarget: dropTarget,
+                    avatar: avatar,
+                    downX: downX,
+                    downY: downY,
+                    dragZoneElement: dragZoneElement,
+                    dropTargetElement: dropTargetElement,
+                    onDragEnd: onDragEnd,
+                    resetState: resetState
                 }));
             }
         );
