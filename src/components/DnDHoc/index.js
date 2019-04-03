@@ -15,6 +15,7 @@ export default function DnDHoc (Component) {
                             downY,
                             dragZoneElement,
                             dropTargetElement,
+                            dropPlace,
                             onDragEnd,
                             resetState,
                         } = dnd;
@@ -26,6 +27,7 @@ export default function DnDHoc (Component) {
                             avatar={avatar}
                             downX={downX}
                             downY={downY}
+                            dropPalce={dropPlace}
                             dragZoneElement={dragZoneElement}
                             dropTargetElement={dropTargetElement}
                             onDragEnd={onDragEnd}
