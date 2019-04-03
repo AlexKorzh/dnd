@@ -8,12 +8,12 @@ export default class DnDProvider extends Component {
         this.state = {
             dragZone: props.dragZone,
             dropTarget: props.dropTarget,
-            dropPlace: props.dropPlace,
             avatar: props.avatar,
             downX: props.downX,
             downY: props.downY,
             dragZoneElement: null,
             dropTargetElement: null,
+            dropPlace: null,
             onDragEnd: info => {
                 this.setState({
                     dragZoneElement: info.dragZoneElement,
