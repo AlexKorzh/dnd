@@ -33,6 +33,7 @@ var DnDProvider = function (_Component) {
         _this.state = {
             dragZone: props.dragZone,
             dropTarget: props.dropTarget,
+            dropPlace: props.dropPlace,
             avatar: props.avatar,
             downX: props.downX,
             downY: props.downY,
