@@ -1,7 +1,7 @@
 import React from 'react';
 import DropTarget from '../DropTarget';
 
-export default function DropTargetHoc (Component, dropTargetConnector) {
+function DropTargetHoc (Component, dropTargetConnector) {
     class DropTargetComponent extends DropTarget {
         constructor (props) {
             super(props);
@@ -87,6 +87,8 @@ export default function DropTargetHoc (Component, dropTargetConnector) {
 
             if (this._targetElem !== newTargetElem) {
                 this._hideHoverIndication(avatar);
+                // override element reference
+                this._elem = newTargetElem;
                 this._targetElem = newTargetElem;
                 this._showHoverIndication(avatar);
             }
@@ -146,3 +148,5 @@ export default function DropTargetHoc (Component, dropTargetConnector) {
 
     return DropTargetComponent;
 }
+
+export default DropTargetHoc;

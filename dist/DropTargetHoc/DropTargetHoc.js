@@ -8,8 +8,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-exports.default = DropTargetHoc;
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -140,6 +138,8 @@ function DropTargetHoc(Component, dropTargetConnector) {
 
                 if (this._targetElem !== newTargetElem) {
                     this._hideHoverIndication(avatar);
+                    // override element reference
+                    this._elem = newTargetElem;
                     this._targetElem = newTargetElem;
                     this._showHoverIndication(avatar);
                 }
@@ -200,3 +200,5 @@ function DropTargetHoc(Component, dropTargetConnector) {
 
     return DropTargetComponent;
 }
+
+exports.default = DropTargetHoc;
