@@ -39,10 +39,12 @@ var DnDProvider = function (_Component) {
             dragZoneElement: null,
             dropTargetElement: null,
             dragZoneId: null,
+            dropTargetZoneId: null,
             dropPosition: null,
             onDragEnd: function onDragEnd(info) {
                 _this.setState({
                     dragZoneId: info.dragZoneId,
+                    dropTargetZoneId: info.dropTargetZoneId,
                     dragZoneElement: info.dragZoneElement,
                     dropTargetElement: info.dropTargetElement,
                     dropPosition: info.dropPosition,

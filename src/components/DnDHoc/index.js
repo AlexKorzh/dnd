@@ -14,6 +14,7 @@ export default function DnDHoc (Component) {
                             downX,
                             downY,
                             dragZoneId,
+                            dropTargetZoneId,
                             dragZoneElement,
                             dropTargetElement,
                             dropPosition,
@@ -30,6 +31,7 @@ export default function DnDHoc (Component) {
                             downY={downY}
                             dropPosition={dropPosition}
                             dragZoneId={dragZoneId}
+                            dropTargetZoneId={dropTargetZoneId}
                             dragZoneElement={dragZoneElement}
                             dropTargetElement={dropTargetElement}
                             onDragEnd={onDragEnd}

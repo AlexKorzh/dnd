@@ -14,10 +14,12 @@ export default class DnDProvider extends Component {
             dragZoneElement: null,
             dropTargetElement: null,
             dragZoneId: null,
+            dropTargetZoneId: null,
             dropPosition: null,
             onDragEnd: info => {
                 this.setState({
                     dragZoneId: info.dragZoneId,
+                    dropTargetZoneId: info.dropTargetZoneId,
                     dragZoneElement: info.dragZoneElement,
                     dropTargetElement: info.dropTargetElement,
                     dropPosition: info.dropPosition,
