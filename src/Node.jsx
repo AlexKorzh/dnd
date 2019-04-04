@@ -22,7 +22,7 @@ class dropTargetConnector {
         dropTarget.props.dnd.onDragEnd({
             dragZoneElement: avatarInfo.dragZone._elem,
             dropTargetElement: dropTarget._elem,
-            dropPlace: dropTarget.dropPlace,
+            dropPosition: dropTarget.dropPosition,
             avatar: avatar,
         });
     }
@@ -41,15 +41,15 @@ class dropTargetConnector {
             if (clientY < above) {
                 dropTarget.removeIndicationClass(['under', 'middle']);
                 dropTarget.addIndicationClass('above');
-                dropTarget.dropPlace = 'above';
+                dropTarget.dropPosition = 'above';
             } else if (clientY > under) {
                 dropTarget.removeIndicationClass(['above', 'middle']);
                 dropTarget.addIndicationClass('under');
-                dropTarget.dropPlace = 'under';
+                dropTarget.dropPosition = 'under';
             } else if (clientY > above && clientY < under) {
                 dropTarget.removeIndicationClass(['above', 'under']);
                 dropTarget.addIndicationClass('middle');
-                dropTarget.dropPlace = 'middle';
+                dropTarget.dropPosition = 'middle';
             }
         }
     }

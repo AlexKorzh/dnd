@@ -31,7 +31,7 @@ function DnDHoc(Component) {
                     downY = dnd.downY,
                     dragZoneElement = dnd.dragZoneElement,
                     dropTargetElement = dnd.dropTargetElement,
-                    dropPlace = dnd.dropPlace,
+                    dropPosition = dnd.dropPosition,
                     onDragEnd = dnd.onDragEnd,
                     resetState = dnd.resetState;
 
@@ -42,7 +42,7 @@ function DnDHoc(Component) {
                     avatar: avatar,
                     downX: downX,
                     downY: downY,
-                    dropPlace: dropPlace,
+                    dropPosition: dropPosition,
                     dragZoneElement: dragZoneElement,
                     dropTargetElement: dropTargetElement,
                     onDragEnd: onDragEnd,
