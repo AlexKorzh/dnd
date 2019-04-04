@@ -38,9 +38,11 @@ var DnDProvider = function (_Component) {
             downY: props.downY,
             dragZoneElement: null,
             dropTargetElement: null,
+            dragZoneId: null,
             dropPosition: null,
             onDragEnd: function onDragEnd(info) {
                 _this.setState({
+                    dragZoneId: info.dragZoneId,
                     dragZoneElement: info.dragZoneElement,
                     dropTargetElement: info.dropTargetElement,
                     dropPosition: info.dropPosition,
