@@ -137,8 +137,9 @@ function DropTargetHoc (Component, dropTargetConnector) {
             this._elem = el;
         };
 
+        // TODO find better solution
         setInstanceRef = el => {
-            this.dropTargetElement = el;
+            this.dropTargetInstance = el;
         }
 
         render () {

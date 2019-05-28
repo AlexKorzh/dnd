@@ -39,7 +39,7 @@ function DropTargetHoc(Component, dropTargetConnector) {
             };
 
             _this.setInstanceRef = function (el) {
-                _this.dropTargetElement = el;
+                _this.dropTargetInstance = el;
             };
 
             if (typeof dropTargetConnector === 'function') {
@@ -190,6 +190,9 @@ function DropTargetHoc(Component, dropTargetConnector) {
 
                 this._targetElem = null;
             }
+
+            // TODO find better solution
+
         }, {
             key: 'render',
             value: function render() {
