@@ -38,6 +38,10 @@ function DropTargetHoc(Component, dropTargetConnector) {
                 _this._elem = el;
             };
 
+            _this.setInstanceRef = function (el) {
+                _this.dropTargetElement = el;
+            };
+
             if (typeof dropTargetConnector === 'function') {
                 _this.dropTargetConnector = new dropTargetConnector(props);
             }
@@ -190,7 +194,8 @@ function DropTargetHoc(Component, dropTargetConnector) {
             key: 'render',
             value: function render() {
                 return _react2.default.createElement(Component, _extends({
-                    dropTargetRef: this.setRef
+                    dropTargetRef: this.setRef,
+                    setInstanseRef: this.setInstanceRef
                 }, this.state, this.props));
             }
         }]);
