@@ -142,12 +142,14 @@ function DropTargetHoc (Component, dropTargetConnector) {
         }
 
         render () {
-            return <Component
-                dropTargetRef={this.setRef}
-                setInstanseRef={this.setInstanceRef}
-                {...this.state}
-                {...this.props}
-            />;
+            return (
+                <Component
+                    {...this.state}
+                    {...this.props}
+                    dropTargetRef={this.setRef}
+                    setInstanceRef={this.setInstanceRef}
+                />
+            );
         }
     }
 

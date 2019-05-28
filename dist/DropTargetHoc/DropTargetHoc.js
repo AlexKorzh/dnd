@@ -193,10 +193,10 @@ function DropTargetHoc(Component, dropTargetConnector) {
         }, {
             key: 'render',
             value: function render() {
-                return _react2.default.createElement(Component, _extends({
+                return _react2.default.createElement(Component, _extends({}, this.state, this.props, {
                     dropTargetRef: this.setRef,
-                    setInstanseRef: this.setInstanceRef
-                }, this.state, this.props));
+                    setInstanceRef: this.setInstanceRef
+                }));
             }
         }]);
 
