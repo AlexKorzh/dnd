@@ -44,7 +44,7 @@ export default class DragAvatar extends Component {
 
         let elem = this._elem = this._dragZoneElem.cloneNode(true);
 
-        elem.className = 'avatar';
+        elem.classList.add('avatar');
 
         // создать вспомогательные свойства shiftX/shiftY
         let coords = getCoords(this._dragZoneElem);

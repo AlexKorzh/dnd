@@ -74,7 +74,7 @@ var DragAvatar = function (_Component) {
 
             var elem = this._elem = this._dragZoneElem.cloneNode(true);
 
-            elem.className = 'avatar';
+            elem.classList.add('avatar');
 
             // создать вспомогательные свойства shiftX/shiftY
             var coords = (0, _utils.getCoords)(this._dragZoneElem);
